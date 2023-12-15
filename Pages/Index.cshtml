@@ -5,12 +5,12 @@
 }
 
 <div class="container">
-  <form>
+  <form method="post">
     <div class="input-group">
-      <label for="searchField" class="input-group-prepend">
+      <label for="ID" class="input-group-prepend">
         <span class="input-group-text">ID</span>
       </label>
-      <input type="text" class="form-control" id="searchField" placeholder="Enter UST ID here...">  @* to be added -> value="@Model.ID" *@
+      <input type="text" class="form-control" id="ID" asp-for="ID" value="@Model.ID" placeholder="Enter UST ID here...">
       <div class="input-group-append">
         <button class="btn btn-primary" type="submit">Search</button>
       </div>
@@ -21,14 +21,22 @@
     <tr>
         <th>ID</th>
         <th>Name</th>
-        <th>Email</th>
+        <th>Address</th>
+        <th>Major</th>
+        <th>cGPA</th>
+        <th>Phone</th>
     </tr>
-    @*@foreach (System.Data.DataRow row in Model.Employees.Rows)
+    @foreach (System.Data.DataRow row in Model.Student.Rows)
     {
         <tr>
             <td>@row["ID"].ToString()</td>
             <td>@row["Name"].ToString()</td>
-            <td>@row["Email"].ToString()</td>
+            <td>@row["Address"].ToString()</td>
+            <td>@row["Major"].ToString()</td>
+            <td>@row["cGPA"].ToString()</td>
+            <td>@row["PhoneNo"].ToString()</td>
         </tr>
-    }*@
+    }
 </table>
+
+
