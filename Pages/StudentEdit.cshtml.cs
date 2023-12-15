@@ -45,7 +45,6 @@ public class Edit : PageModel
                 Major = reader.GetString(2);
                 cGPA = reader.GetDecimal(3).ToString();
                 PhoneNo = reader.GetString(4);
-                Console.WriteLine('1'+Name);
             }
         }
     }
@@ -55,7 +54,6 @@ public class Edit : PageModel
         string conString = @"Data Source=DESKTOP-R0BEJSG;Initial Catalog=RMS_DB;Integrated Security=True";
         SqlConnection con = new SqlConnection(conString);
         Console.WriteLine("connected");
-        Console.WriteLine('2'+Name);
         string querystring = "UPDATE Student SET ID=@ID, Name=@Name, Address = @Address, Major = @Major, cGPA = @cGPA, PhoneNo = @PhoneNo WHERE ID = @ID";
         
         SqlCommand cmd1 = new SqlCommand(querystring, con);

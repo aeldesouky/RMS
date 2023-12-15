@@ -19,41 +19,41 @@
 </form>
 </div><hr/>
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-6">
-            <div class="card mt-5">
-                <div class="card-header text-center">
-                    <h5>Student Information</h5>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-6">
-                            <p><strong>ID:</strong> @Model.ID</p>
-                            <p><strong>Name:</strong> @Model.Name</p>
-                            <p><strong>Address:</strong> @Model.Address</p>
-                        </div>
-                        <div class="col-6">
-                            <p><strong>Major:</strong> @Model.Major</p>
-                            <p><strong>cGPA:</strong> @Model.cGPA</p>
-                            <p><strong>Phone:</strong> @Model.PhoneNo</p>
+<form method="post">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <div class="card mt-5">
+                    <div class="card-header text-center">
+                        <h5>Student Information</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <p><strong>ID:</strong> @Model.ID</p>
+                                <p><strong>Name:</strong> @Model.Name</p>
+                                <p><strong>Address:</strong> @Model.Address</p>
+                            </div>
+                            <div class="col-6">
+                                <p><strong>Major:</strong> @Model.Major</p>
+                                <p><strong>cGPA:</strong> @Model.cGPA</p>
+                                <p><strong>Phone:</strong> @Model.PhoneNo</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="card-footer">
-                    <form method="post">
+                    <div class="card-footer">
                         <button type="button" class="btn btn-secondary btn-block" onclick="location.href='/Student'">Clear</button>
-                        @*<button type="button" class="btn btn-secondary btn-block" onclick="location.href='/Edit?ID=@Model.ID'">Edit</button>*@
-                        <button type="button" class="btn btn-secondary btn-block" onclick="location.href='/Edit?ID=@Model.ID'">Edit</button>
-                        <button type="submit" class="btn btn-secondary btn-block" method="post" asp-page-handler="Delete">Delete</button>
-                        <button type="button" class="btn btn-secondary btn-block" onclick="location.href='/Report'">Grade Report</button>
-                        <button type="button" class="btn btn-secondary btn-block" onclick="location.href='/Schedule'">Schedule</button>
-                    </form>
+                        <button type="button" class="btn btn-secondary btn-block" onclick="location.href='/StudentEdit?ID=@Model.ID'">Edit</button>
+                        <button type="submit" class="btn btn-secondary btn-block" asp-page-handler="Delete" asp-route-id="@Model.ID">Delete</button>
+                        <button type="button" class="btn btn-secondary btn-block" onclick="location.href='/Report?ID=@Model.ID'">Grade Report</button>
+                        <button type="button" class="btn btn-secondary btn-block" onclick="location.href='/Schedule?ID=@Model.ID'">Schedule</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</form>
+
 
 
 

@@ -48,21 +48,22 @@ public class Student : PageModel
         }
     }
     
-    public IActionResult OnPostDelete()
+    public IActionResult OnPostDelete(string ID)
     {
+        Console.WriteLine("HERE" + ID);
         if (!string.IsNullOrEmpty(ID))
         {
-            string conString = @"Data Source=DESKTOP-R0BEJSG;Initial Catalog=RMS_DB;Integrated Security=True";
-            SqlConnection con = new SqlConnection(conString);
-            string queryString = "DELETE FROM Student WHERE ID = @ID";
-
-            SqlCommand command = new SqlCommand(queryString, con);
-            command.Parameters.AddWithValue("@ID", ID);
-
-            con.Open();
-            command.ExecuteNonQuery();
-
+            Console.WriteLine("empty");
         }
+        string conString = @"Data Source=DESKTOP-R0BEJSG;Initial Catalog=RMS_DB;Integrated Security=True";
+        SqlConnection con = new SqlConnection(conString);
+        string queryString = "DELETE FROM Student WHERE ID = @ID";
+
+        SqlCommand command = new SqlCommand(queryString, con);
+        command.Parameters.AddWithValue("@ID", ID);
+
+        con.Open();
+        command.ExecuteNonQuery();
         return RedirectToPage("/Index");
     }
 }
