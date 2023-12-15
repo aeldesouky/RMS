@@ -8,3 +8,31 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+<div class="container">
+    <form>
+        <div class="input-group">
+            <label for="searchField" class="input-group-prepend">
+                <span class="input-group-text">ID</span>
+            </label>
+            <input type="text" class="form-control" id="searchField" placeholder="Enter UST ID here...">  @* to be added -> value="@Model.ID" *@
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </div>
+        </div>
+    </form>
+</div><hr/>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+    @*@foreach (System.Data.DataRow row in Model.Employees.Rows)
+    {
+        <tr>
+            <td>@row["ID"].ToString()</td>
+            <td>@row["Name"].ToString()</td>
+            <td>@row["Email"].ToString()</td>
+        </tr>
+    }*@
+</table>
