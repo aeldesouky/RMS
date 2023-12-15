@@ -50,7 +50,6 @@ public class Student : PageModel
     
     public IActionResult OnPostDelete(string ID)
     {
-        Console.WriteLine("HERE" + ID);
         if (!string.IsNullOrEmpty(ID))
         {
             Console.WriteLine("empty");
