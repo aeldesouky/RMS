@@ -31,6 +31,19 @@ public class GReport : PageModel
             GradeReport.Load(reader);
             
         }
+        else if (!string.IsNullOrEmpty(StudentID))
+        {
+            string conString = @"Data Source=DESKTOP-R0BEJSG;Initial Catalog=RMS_DB;Integrated Security=True";
+            SqlConnection con = new SqlConnection(conString);
+            string queryString = "SELECT RepNum, StudentID, CourseCode, Grade FROM GradeReport WHERE StudentID = @StudentID";
+
+            SqlCommand command = new SqlCommand(queryString, con);
+            command.Parameters.AddWithValue("@StudentID", StudentID);
+            con.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            GradeReport = new DataTable();
+            GradeReport.Load(reader);
+        }
         else
         {
             string conString = @"Data Source=DESKTOP-R0BEJSG;Initial Catalog=RMS_DB;Integrated Security=True";
