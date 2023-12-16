@@ -3,50 +3,50 @@ using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
 using System.Data;
 
-namespace RMS.Pages.Shared;
+namespace RMS.Pages;
 
-public class GReport : PageModel
+public class Petition : PageModel
 {
-    public DataTable GradeReport { get; private set; }
+    public DataTable PetitionTable { get; private set; }
     
     [BindProperty(SupportsGet = true)]
-    public string RepNum { get; set; }
+    public string PetNum { get; set; }
     
     [BindProperty(SupportsGet = true)]
     public string StudentID { get; set; }
 
     public void OnGet()
     {
-        if (!string.IsNullOrEmpty(RepNum))
+        if (!string.IsNullOrEmpty(PetNum))
         {
             string conString = @"Data Source=DESKTOP-R0BEJSG;Initial Catalog=RMS_DB;Integrated Security=True";
             SqlConnection con = new SqlConnection(conString);
-            string queryString = "SELECT RepNum, StudentID, CourseCode, Grade FROM GradeReport WHERE RepNum = @RepNum";
+            string queryString = "SELECT PetNum, StudentID, CourseCode, RegistrarID, Stat FROM Petition WHERE PetNum = @PetNum";
 
             SqlCommand command = new SqlCommand(queryString, con);
-            command.Parameters.AddWithValue("@RepNum", RepNum);
+            command.Parameters.AddWithValue("@PetNum", PetNum);
             con.Open();
             SqlDataReader reader = command.ExecuteReader();
-            GradeReport = new DataTable();
-            GradeReport.Load(reader);
+            PetitionTable = new DataTable();
+            PetitionTable.Load(reader);
             
         }
         else
         {
             string conString = @"Data Source=DESKTOP-R0BEJSG;Initial Catalog=RMS_DB;Integrated Security=True";
             SqlConnection con = new SqlConnection(conString);
-            string queryString = "SELECT RepNum, StudentID, CourseCode, Grade FROM GradeReport";
+            string queryString = "SELECT PetNum, StudentID, CourseCode, RegistrarID, Stat FROM Petition";
 
             SqlCommand command = new SqlCommand(queryString, con);
 
             con.Open();
             SqlDataReader reader = command.ExecuteReader();
-            GradeReport = new DataTable();
-            GradeReport.Load(reader);
+            PetitionTable = new DataTable();
+            PetitionTable.Load(reader);
         }
     }
     public IActionResult OnPost()
     {
-        return RedirectToPage("/Report", new { RepNum = RepNum });
+        return RedirectToPage("/Petition", new { PetNum = PetNum });
     }
 }

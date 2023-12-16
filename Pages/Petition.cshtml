@@ -1,17 +1,17 @@
 ﻿@page
-@model RMS.Pages.Shared.GReport
+@model RMS.Pages.Petition
 
 @{
-    ViewData["Title"] = "Grade Report";
+    ViewData["Title"] = "Petition";
 }
 
 <div class="container">
     <form method="post">
         <div class="input-group">
-            <label for="StudentID" class="input-group-prepend">
+            <label for="PetNum" class="input-group-prepend">
                 <span class="input-group-text">Number</span>
             </label>
-            <input type="text" class="form-control" id="StudentID" asp-for="RepNum" value="@Model.RepNum" placeholder="Enter Report Number here...">
+            <input type="text" class="form-control" id="PetNum" asp-for="PetNum" value="@Model.PetNum" placeholder="Enter Petition Number here...">
             <div class="input-group-append">
                 <button class="btn btn-primary" type="submit">Search</button>
             </div>
@@ -23,16 +23,17 @@
         <th>Serial</th>
         <th>StudentID</th>
         <th>CourseCode</th>
-        <th>Grade</th>
-        
+        <th>RegistrarID</th>
+        <th>Status</th>
     </tr>
-    @foreach (System.Data.DataRow row in Model.GradeReport.Rows)
+    @foreach (System.Data.DataRow row in Model.PetitionTable.Rows)
     {
         <tr>
-            <td>@row["RepNum"].ToString()</td>
+            <td>@row["PetNum"].ToString()</td>
             <td>@row["StudentID"].ToString()</td>
             <td>@row["CourseCode"].ToString()</td>
-            <td>@row["Grade"].ToString()</td>
+            <td>@row["RegistrarID"].ToString()</td>
+            <td>@row["Stat"].ToString()</td>
         </tr>
     }
 </table>

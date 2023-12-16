@@ -46,7 +46,7 @@
                         <button type="button" class="btn btn-secondary btn-block" onclick="location.href='/Student'">Clear</button>
                         <button type="button" class="btn btn-secondary btn-block" onclick="location.href='/StudentEdit?ID=@Model.ID'">Edit</button>
                         <button type="submit" class="btn btn-secondary btn-block" asp-page-handler="Delete" asp-route-id="@Model.ID">Delete</button>
-                        <button type="button" class="btn btn-secondary btn-block" onclick="location.href='/Report?ID=@Model.ID'">Grade Report</button>
+                        <button type="button" class="btn btn-secondary btn-block" onclick="location.href='/Report?StudentID=@Model.ID'">Grade Report</button>
                         <button type="button" class="btn btn-secondary btn-block" onclick="location.href='/Schedule?GP=@Model.GP'">Schedule</button>
                     </div>
                 </div>
