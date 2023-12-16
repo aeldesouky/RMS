@@ -2,18 +2,53 @@
 @model RMS.Pages.Room
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Rooms page";
 }
 
-<!DOCTYPE html>
+<div class="container">
+<form method="get">
+    <div class="input-group">
+        <label for="Name" class="input-group-prepend">
+            <span class="input-group-text">Room</span>
+        </label>
+        <input type="text" class="form-control" id="Name" name="Name" value="@Model.Name" placeholder="Enter Room Name here...">
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="submit">Search</button>
+        </div>
+    </div>
+</form>
+</div><hr/>
 
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-<div>
-    
-</div>
-</body>
-</html>
+<form method="post">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <div class="card mt-5">
+                    <div class="card-header text-center">
+                        <h5>Room Information</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <p><strong>Name:</strong> @Model.Name</p>
+                                <p><strong>Floor:</strong> @Model.RoomFloor</p>
+                                <p><strong>Number:</strong> @Model.Number</p>
+                            </div>
+                            <div class="col-6">
+                                <p><strong>Zone:</strong> @Model.Zone</p>
+                                <p><strong>Type:</strong> @Model.Type</p>
+                                <p><strong>Capacity:</strong> @Model.Capacity</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-secondary btn-block" onclick="location.href='/Room'">Clear</button>
+                        <button type="button" class="btn btn-secondary btn-block" onclick="location.href='/RoomEdit?ID=@Model.Name'">Edit</button>
+                        <button type="submit" class="btn btn-secondary btn-block" asp-page-handler="Delete" asp-route-id="@Model.Name">Delete</button>
+                        <button type="button" class="btn btn-secondary btn-block" onclick="location.href='/Schedule?RoomName=@Model.Name'">Schedule</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

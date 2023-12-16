@@ -1,0 +1,59 @@
+﻿@page
+@model RMS.Pages.RoomEdit
+
+@{
+    ViewData["Title"] = "Room Edit page";
+}
+
+<div class="container">
+<form method="get">
+    <div class="input-group">
+        <label for="Name" class="input-group-prepend">
+            <span class="input-group-text">Name</span>
+        </label>
+        <input type="text" class="form-control" id="Name" name="Name" value="@Model.Name" placeholder="Enter Room Number here...">
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="submit">Search</button>
+        </div>
+    </div>
+</form>
+</div><hr/>
+
+<form method="post">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <div class="card mt-5">
+                    <div class="card-header text-center">
+                        <h5>Room Information</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <label><strong>Name:</strong></label>
+                                <input type="text" class="form-control" id="Name" asp-for="Name" value="@Model.Name">
+                                <label><strong>Floor:</strong></label>
+                                <input type="text" class="form-control" id="RoomFloor" asp-for="RoomFloor" value="@Model.RoomFloor">
+                                <label><strong>Number:</strong></label>
+                                <input type="text" class="form-control" id="Number" asp-for="Number" value="@Model.Number">
+                            </div>
+                            <div class="col-6">
+                                <strong>Zone:</strong>
+                                <input type="text" class="form-control" id="Zone" asp-for="Zone" value="@Model.Zone">
+                                <strong>Type:</strong>
+                                <input type="text" class="form-control" id="Type" asp-for="Type" value="@Model.Type">
+                                <strong>Capacity:</strong>
+                                <input type="text" class="form-control" id="Capacity" asp-for="Capacity" value="@Model.Capacity">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <form method="post">
+                            <button type="submit" class="btn btn-secondary btn-block">Confirm</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -2,18 +2,38 @@
 @model RMS.Pages.Schedule
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Student Schedule";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-<div>
-    
-</div>
-</body>
-</html>
+<div class="container">
+  <form method="post">
+    <div class="input-group">
+      <label for="GP" class="input-group-prepend">
+        <span class="input-group-text">Group</span>
+      </label>
+      <input type="text" class="form-control" id="ID" asp-for="GP" value="@Model.GP" placeholder="Enter Group Number here...">
+      <div class="input-group-append">
+        <button class="btn btn-primary" type="submit">Filter</button>
+      </div>
+    </div>
+  </form>
+</div><hr/>
+<table class="table">
+    <tr>
+        <th>Group</th>
+        <th>CourseCode</th>
+        <th>RoomName</th>
+        <th>Day</th>
+        <th>LecTime</th>
+    </tr>
+    @foreach (System.Data.DataRow row in Model.ScheduleTable.Rows)
+    {
+        <tr>
+            <td>@row["GP"].ToString()</td>
+            <td>@row["CourseCode"].ToString()</td>
+            <td>@row["RoomName"].ToString()</td>
+            <td>@row["Day"].ToString()</td>
+            <td>@row["LecTime"].ToString()</td>
+        </tr>
+    }
+</table>

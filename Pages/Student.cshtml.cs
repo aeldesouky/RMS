@@ -16,21 +16,24 @@ public class Student : PageModel
     public string Address { get; set; }
     
     [BindProperty(SupportsGet = true)]
+    public string PhoneNo { get; set; }
+    
+    [BindProperty(SupportsGet = true)]
     public string Major { get; set; }
     
     [BindProperty(SupportsGet = true)]
     public string cGPA { get; set; }
-
-    [BindProperty(SupportsGet = true)]
-    public string PhoneNo { get; set; }
     
+    [BindProperty(SupportsGet = true)]
+    public string GP { get; set; }
+
     public void OnGet()
     {
         if (!string.IsNullOrEmpty(ID))
         {
             string conString = @"Data Source=DESKTOP-R0BEJSG;Initial Catalog=RMS_DB;Integrated Security=True";
             SqlConnection con = new SqlConnection(conString);
-            string queryString = "SELECT Name, Address, Major, cGPA, PhoneNo FROM Student WHERE ID = @ID";
+            string queryString = "SELECT ID, Name, Address, PhoneNo, Major, cGPA, GP FROM Student WHERE ID = @ID";
 
             SqlCommand command = new SqlCommand(queryString, con);
             command.Parameters.AddWithValue("@ID", ID);
@@ -39,11 +42,13 @@ public class Student : PageModel
                 
             if (reader.Read())
             {
-                Name = reader.GetString(0);
-                Address = reader.GetString(1);
-                Major = reader.GetString(2);
-                cGPA = reader.GetDecimal(3).ToString();
-                PhoneNo = reader.GetString(4);
+                Name = reader.GetString(1);
+                Address = reader.GetString(2);
+                PhoneNo = reader.GetString(3);
+                Major = reader.GetString(4);
+                cGPA = reader.GetDecimal(5).ToString();
+                GP = reader.GetInt32(6).ToString();
+                
             }
         }
     }

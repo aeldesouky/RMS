@@ -16,7 +16,7 @@ public class IndexModel : PageModel
     {
         string conString = @"Data Source=DESKTOP-R0BEJSG;Initial Catalog=RMS_DB;Integrated Security=True";
         SqlConnection con = new SqlConnection(conString);
-        string queryString = "SELECT ID, Name, Address, Major, cGPA, PhoneNo FROM Student";
+        string queryString = "SELECT ID, Name, Address, PhoneNo, Major, cGPA, GP FROM Student";
 
         SqlCommand command = new SqlCommand(queryString, con);
 
