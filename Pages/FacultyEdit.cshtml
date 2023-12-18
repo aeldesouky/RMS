@@ -1,0 +1,49 @@
+﻿@page
+@model RMS.Pages.FacultyEdit
+
+@{
+    ViewData["Title"] = "Faculty Edit page";
+}
+
+<div class="container">
+<form method="get">
+    <div class="input-group">
+        <label for="ID" class="input-group-prepend">
+            <span class="input-group-text">ID</span>
+        </label>
+        <input type="text" class="form-control" id="ID" name="ID" value="@Model.ID" placeholder="Enter UST ID here...">
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="submit">Search</button>
+        </div>
+    </div>
+</form>
+</div><hr/>
+
+<form method="post">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="card mt-5">
+                <div class="card-header text-center">
+                    <h5>Faculty Information</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <label><strong>ID:</strong></label>
+                            <input type="text" class="form-control" id="ID" asp-for="ID" value="@Model.ID">
+                        </div>
+                        <div class="col-6">
+                             <label><strong>Name:</strong></label>
+                            <input type="text" class="form-control" id="Name" asp-for="Name" value="@Model.Name">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <form method="post">
+                        <button type="submit" class="btn btn-secondary btn-block">Confirm</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

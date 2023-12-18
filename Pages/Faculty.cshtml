@@ -1,0 +1,49 @@
+﻿@page
+@model RMS.Pages.Faculty
+
+@{
+    ViewData["Title"] = "Faculty page";
+}
+
+<div class="container">
+    <form method="get">
+        <div class="input-group">
+            <label for="ID" class="input-group-prepend">
+                <span class="input-group-text">ID</span>
+            </label>
+            <input type="text" class="form-control" id="ID" name="ID" value="@Model.ID" placeholder="Enter UST ID here...">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </div>
+        </div>
+    </form>
+</div><hr/>
+
+<form method="post">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <div class="card mt-5">
+                    <div class="card-header text-center">
+                        <h5>Faculty Information</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <p><strong>ID:</strong> @Model.ID</p>
+                            </div>
+                            <div class="col-6">
+                                <p><strong>Name:</strong> @Model.Name</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-secondary btn-block" onclick="location.href='/Faculty'">Clear</button>
+                        <button type="button" class="btn btn-secondary btn-block" onclick="location.href='/FacultyEdit?ID=@Model.ID'">Edit</button>
+                        <button type="submit" class="btn btn-secondary btn-block" asp-page-handler="Delete" asp-route-id="@Model.ID">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

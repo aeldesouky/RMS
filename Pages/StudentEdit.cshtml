@@ -1,0 +1,59 @@
+﻿@page
+@model RMS.Pages.Edit
+
+@{
+    ViewData["Title"] = "Student Edit page";
+}
+
+<div class="container">
+<form method="get">
+    <div class="input-group">
+        <label for="ID" class="input-group-prepend">
+            <span class="input-group-text">ID</span>
+        </label>
+        <input type="text" class="form-control" id="ID" name="ID" value="@Model.ID" placeholder="Enter UST ID here...">
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="submit">Search</button>
+        </div>
+    </div>
+</form>
+</div><hr/>
+
+<form method="post">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <div class="card mt-5">
+                    <div class="card-header text-center">
+                        <h5>Student Information</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <label><strong>ID:</strong></label>
+                                <input type="text" class="form-control" id="ID" asp-for="ID" value="@Model.ID">
+                                <label><strong>Name:</strong></label>
+                                <input type="text" class="form-control" id="Name" asp-for="Name" value="@Model.Name">
+                                <label><strong>Address:</strong></label>
+                                <input type="text" class="form-control" id="Address" asp-for="Address" value="@Model.Address">
+                            </div>
+                            <div class="col-6">
+                                <strong>Major:</strong>
+                                <input type="text" class="form-control" id="Major" asp-for="Major" value="@Model.Major">
+                                <strong>cGPA:</strong>
+                                <input type="text" class="form-control" id="cGPA" asp-for="cGPA" value="@Model.cGPA">
+                                <strong>Phone:</strong>
+                                <input type="text" class="form-control" id="PhoneNo" asp-for="PhoneNo" value="@Model.PhoneNo">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <form method="post">
+                            <button type="submit" class="btn btn-secondary btn-block">Confirm</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
