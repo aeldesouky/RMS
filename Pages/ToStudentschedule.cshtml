@@ -1,0 +1,40 @@
+@page
+@model RMS.Pages.ToStudentschedule
+
+@{
+    Layout =  Layout =  "~/Pages/Shared/_Layout1.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>MY Schedule</title>
+</head>
+<body>
+
+<div class="container mt-3">
+  <h2>Schedule</h2>
+  <table class="table">
+      <tr>
+          <th>Group</th>
+          <th>CourseCode</th>
+          <th>RoomName</th>
+          <th>Day</th>
+          <th>LecTime</th>
+      </tr>
+      @foreach (System.Data.DataRow row in Model.ScheduleTable.Rows)
+      {
+          <tr>
+              <td>@row["GP"].ToString()</td>
+              <td>@row["CourseCode"].ToString()</td>
+              <td>@row["RoomName"].ToString()</td>
+              <td>@row["Day"].ToString()</td>
+              <td>@row["LecTime"].ToString()</td>
+          </tr>
+      }
+  </table>
+</div>
+
+</body>
+</html>

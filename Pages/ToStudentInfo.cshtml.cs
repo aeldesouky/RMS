@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
 
 namespace RMS.Pages;
 
-public class Student : PageModel
+public class ToStudentInfo : PageModel
 {
     [BindProperty(SupportsGet = true)]
     public string ID { get; set; }
@@ -26,17 +26,20 @@ public class Student : PageModel
     
     [BindProperty(SupportsGet = true)]
     public string GP { get; set; }
+    public int GivenID { get;  set; }
+    public string StoredUserId { get; private set; }
 
     public void OnGet()
     {
-        if (!string.IsNullOrEmpty(ID))
-        {
+           StoredUserId = HttpContext.Session.GetString("UserID");
+           GivenID=int.Parse(StoredUserId);
+            Console.WriteLine("GivenID: " + GivenID); // Check if GivenID is set correctly
             string conString = @"Data Source=Abdullah;Initial Catalog=RMS_DB;Integrated Security=True";
             SqlConnection con = new SqlConnection(conString);
-            string queryString = "SELECT ID, Name, Address, PhoneNo, Major, cGPA, GP FROM Student WHERE ID = @ID";
+            string queryString = "SELECT ID, Name, Address, PhoneNo, Major, cGPA, GP FROM Student WHERE ID = @GIVENID";
 
             SqlCommand command = new SqlCommand(queryString, con);
-            command.Parameters.AddWithValue("@ID", ID);
+            command.Parameters.AddWithValue("@GIVENID", GivenID);
             con.Open();
             SqlDataReader reader = command.ExecuteReader();
                 
@@ -50,7 +53,7 @@ public class Student : PageModel
                 GP = reader.GetInt32(6).ToString();
                 
             }
-        }
+        
     }
     
     public IActionResult OnPostDelete(string ID)

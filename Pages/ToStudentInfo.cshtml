@@ -1,0 +1,41 @@
+@page
+@model RMS.Pages.ToStudentInfo
+
+@{
+    Layout =  "~/Pages/Shared/_Layout1.cshtml";
+}
+
+
+@* <form method="post"> *@
+<div class="container">
+    <h1>@Model.GivenID</h1>
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <div class="card mt-5">
+                <div class="card-header text-center">
+                    <h5>Your Information</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <p><strong>ID:</strong> @Model.GivenID</p>
+                            <p><strong>Name:</strong> @Model.Name</p>
+                            <p><strong>Address:</strong> @Model.Address</p>
+                            <p><strong>Phone:</strong> @Model.PhoneNo</p>
+                        </div>
+                        <div class="col-6">
+                            <p><strong>Major:</strong> @Model.Major</p>
+                            <p><strong>cGPA:</strong> @Model.cGPA</p>
+                            <p><strong>Group:</strong> @Model.GP</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-secondary btn-block" onclick="location.href='/Report?StudentID=@Model.ID'">Grade Report</button>
+                    <button type="button" class="btn btn-secondary btn-block" onclick="location.href='/ToStudentschedule'">Schedule</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@* </form> *@

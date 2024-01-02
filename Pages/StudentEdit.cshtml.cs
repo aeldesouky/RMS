@@ -29,7 +29,7 @@ public class Edit : PageModel
     {
         if (!string.IsNullOrEmpty(ID))
         {
-            string conString = @"Data Source=DESKTOP-R0BEJSG;Initial Catalog=RMS_DB;Integrated Security=True";
+            string conString = @"Data Source=Abdullah;Initial Catalog=RMS_DB;Integrated Security=True";
             SqlConnection con = new SqlConnection(conString);
             string queryString = "SELECT Name, Address, Major, cGPA, PhoneNo FROM Student WHERE ID = @ID";
 

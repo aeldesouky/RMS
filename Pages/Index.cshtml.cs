@@ -7,26 +7,78 @@ namespace RMS.Pages;
 
 public class IndexModel : PageModel
 {
-    public DataTable Student { get; private set; }
-    
-    [BindProperty(SupportsGet = true)]
-    public string ID { get; set; }
+    private readonly ILogger<IndexModel> _logger;
+
+    public IndexModel(ILogger<IndexModel> logger)
+    {
+        _logger = logger;
+    }
 
     public void OnGet()
     {
-        string conString = @"Data Source=DESKTOP-R0BEJSG;Initial Catalog=RMS_DB;Integrated Security=True";
-        SqlConnection con = new SqlConnection(conString);
-        string queryString = "SELECT ID, Name, Address, PhoneNo, Major, cGPA, GP FROM Student";
-
-        SqlCommand command = new SqlCommand(queryString, con);
-
-        con.Open();
-        SqlDataReader reader = command.ExecuteReader();
-        Student = new DataTable();
-        Student.Load(reader);
     }
-    public IActionResult OnPost()
+    
+    public IActionResult OnPostStudentLogin(int userId, string password)
     {
-        return RedirectToPage("/Student", new { ID = ID });
+        bool isvalid = CheckStudentCredentials(userId, password);
+        
+        if (isvalid)
+        {
+            HttpContext.Session.SetString("UserID", userId.ToString());
+            return RedirectToPage("/ToStudent"); // Corrected redirection syntax
+        }
+        else
+        {
+            return RedirectToPage("/Index");
+        }
     }
+
+
+    public IActionResult OnPostAdminLogin(int userId, string password)
+    {
+        bool isvalid = CheckAdminCredentials(userId, password);
+        
+        if (isvalid)
+        {
+            return RedirectToPage("/adminPage");
+        }
+        else
+        {
+            return RedirectToPage("/Index");
+        }
+    }
+            
+    private bool CheckStudentCredentials(int userId, string password)
+    {
+        string ConString = "Data Source=Abdullah;Initial Catalog=RMS_DB;Integrated Security=True";
+        using (SqlConnection con = new SqlConnection(ConString))
+        {
+            con.Open();
+            string query = "SELECT COUNT(*) FROM Login WHERE ID = @userId AND Password = @password AND Type = 'Student'";
+            SqlCommand command = new SqlCommand(query, con);
+            command.Parameters.AddWithValue("@userId", userId);
+            command.Parameters.AddWithValue("@password", password);
+
+            int count = (int)command.ExecuteScalar();
+            return count > 0; // Returns true if a matching record is found in the database
+        }
+    }
+    
+    
+    private bool CheckAdminCredentials(int userId, string password)
+    {
+        string ConString = "Data Source=Abdullah;Initial Catalog=RMS_DB;Integrated Security=True";
+        using (SqlConnection con = new SqlConnection(ConString))
+        {
+            con.Open();
+            string query = "SELECT COUNT(*) FROM Login WHERE ID = @userId AND Password = @password AND Type = 'Admin'";
+            SqlCommand command = new SqlCommand(query, con);
+            command.Parameters.AddWithValue("@userId", userId);
+            command.Parameters.AddWithValue("@password", password);
+
+            int count = (int)command.ExecuteScalar();
+            return count > 0; // Returns true if a matching record is found in the database
+        }
+    }
+    
 }

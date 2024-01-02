@@ -16,7 +16,7 @@ public class TaRaEdit : PageModel
     {
         if (!string.IsNullOrEmpty(ID))
         {
-            string conString = @"Data Source=DESKTOP-R0BEJSG;Initial Catalog=RMS_DB;Integrated Security=True";
+            string conString = @"Data Source=Abdullah;Initial Catalog=RMS_DB;Integrated Security=True";
             SqlConnection con = new SqlConnection(conString);
             string queryString = "SELECT Name FROM TaRa WHERE ID = @ID";
 

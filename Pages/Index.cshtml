@@ -1,44 +1,48 @@
 ﻿@page
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    Layout = "~/Pages/Shared/_LayoutNoNav.cshtml";
+    
 }
+<div class="container text-center pt-4">
+  <h1 >welcome To  The LoginPage</h1>
+</div>
+<div class="shadow" style="height: 500px">
+<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5" style="padding: 50px">
+        <img src="https://raw.githubusercontent.com/abdullahyasser0/python/main/Zewailcity.png"
+             class="img-fluid" alt="Sample image">
+      </div>
+      
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form method="post">
+          <div class="form-outline mb-4">
+            <input type="number" id="form3Example3" class="form-control form-control-lg" name="UserID"
+                   placeholder="Enter a valid UserID" required />
+            <label class="form-label" for="form3Example3">UserID</label>
+          </div>
 
-<div class="container">
-  <form method="post">
-    <div class="input-group">
-      <label for="ID" class="input-group-prepend">
-        <span class="input-group-text">ID</span>
-      </label>
-      <input type="text" class="form-control" id="ID" asp-for="ID" value="@Model.ID" placeholder="Enter UST ID here...">
-      <div class="input-group-append">
-        <button class="btn btn-primary" type="submit">Search</button>
+          <!-- Password input -->
+          <div class="form-outline mb-3">
+            <input type="password" id="form3Example4" class="form-control form-control-lg" name="password"
+                   placeholder="Enter password" required />
+            <label class="form-label" for="form3Example4">Password</label>
+          </div>
+
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button type="submit" class="btn btn-primary btn-lg" asp-page-handler="AdminLogin"
+                    style="padding-left: 2.5rem; padding-right: 2.5rem;">Admin Login</button>
+            <button type="submit" class="btn btn-primary btn-lg" asp-page-handler="StudentLogin"
+                    style="padding-right: 2.5rem; padding-left: 2.5rem;">Student Login</button>
+          </div>
+        </form>
       </div>
     </div>
-  </form>
-</div><hr/>
-<table class="table">
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Address</th>
-        <th>Phone</th>
-        <th>Major</th>
-        <th>cGPA</th>
-        <th>Group</th>
-    </tr>
-    @foreach (System.Data.DataRow row in Model.Student.Rows)
-    {
-        <tr>
-            <td>@row["ID"].ToString()</td>
-            <td>@row["Name"].ToString()</td>
-            <td>@row["Address"].ToString()</td>
-            <td>@row["PhoneNo"].ToString()</td>
-            <td>@row["Major"].ToString()</td>
-            <td>@row["cGPA"].ToString()</td>
-            <td>@row["GP"].ToString()</td>
-        </tr>
-    }
-</table>
-
-
+  </div>
+ 
+</section>
+ </div>
