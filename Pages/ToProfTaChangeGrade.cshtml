@@ -1,0 +1,44 @@
+@page
+@model RMS.Pages.ToProfTaChangeGrade
+
+@{
+    Layout = "~/Pages/Shared/_ToProfTa.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<div class="container mt-3">
+    <h2>Grade Report</h2>
+    <table class="table">
+        <tr>
+            <th>Student ID</th>
+            <th>Course Code</th>
+            <th>Grade</th>
+        </tr>
+            
+        @if (Model.GradeReportData != null && Model.GradeReportData.Count > 0)
+        {
+            @foreach (var row in Model.GradeReportData)
+            {
+                <tr>
+                    <td>@row.StudentID</td>
+                    <td>@row.CourseCode</td>
+                    <td>@row.Grade</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="3">No data found.</td>
+            </tr>
+        }
+    </table>
+</div>
+</body>
+</html>
