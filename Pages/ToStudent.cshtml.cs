@@ -44,4 +44,9 @@ public class ToStudent : PageModel
     {
         return RedirectToPage("/ToStudentInfo");
     }
+    public IActionResult OnPostLogout()
+    {
+        HttpContext.Session.Clear();
+        return RedirectToPage("/Index");
+    }
 }

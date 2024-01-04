@@ -1,0 +1,82 @@
+@page
+@model RMS.Pages.ToItAddRoom
+
+@{
+  Layout = "~/Pages/Shared/_ToIt.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<h1>Add Room</h1>
+<br/>
+<form method="post">
+  <div class="form-group">
+    <label for="Name">Name:</label>
+    <input type="text" class="form-control" placeholder="Enter Name" id="Name" asp-for="@Model.Name" required/>
+  </div>
+  @* <div class="form-group"> *@
+  @*   <label for="RoomFloor">RoomFloor:</label> *@
+  @*   <input type="text" class="form-control" placeholder="Enter Room Floor" id="RoomFloor" asp-for="@Model.RoomFloor" required/> *@
+  @* </div> *@
+    <div class="form-group">
+        <label for="RoomFloor">Room Floor:</label>
+        <select class="form-control" id="RoomFloor" asp-for="@Model.RoomFloor" required>
+            <option value="">Select Room Floor</option>
+            <option value="G">Ground</option>
+            <option value="F">First</option>
+            <option value="S">Second</option>
+        </select>
+    </div>
+
+  <div class="form-group">
+    <label for="Number">Number:</label>
+    <input type="text" class="form-control" placeholder="Enter Number" id="Number" asp-for="@Model.Number" required/>
+  </div>
+
+
+  
+  <div class="form-group">
+          <label for="Zone">Zone:</label>
+          <select class="form-control" id="Zone" asp-for="@Model.Zone" required>
+              <option value="">Select Zone</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="E">E</option>
+              <option value="D">D</option>
+
+          </select>
+      </div>
+  
+  
+  <div class="form-group">
+            <label for="Type">Type:</label>
+            <select class="form-control" id="Type" asp-for="@Model.Type" required>
+                <option value="">Select Type</option>
+                <option value="Office">Office</option>
+                <option value="Hall">Hall</option>
+                <option value="Biology Lab">Biology Lab</option>
+                <option value="Computer Lab">Computer Lab</option>
+                <option value="claas">claas</option>
+                <option value="Classroom">Classroom</option>
+                <option value="Lounge">Lounge</option>
+                <option value="Meeting">Meeting</option>
+                <option value="Physics Lab">Physics Lab</option>
+                <option value="Sleeproom">Sleeproom</option>
+                <option value="Chemistry Lab">Chemistry Lab</option>
+                
+            </select>
+        </div>
+  <div class="form-group">
+    <label for="Capacity">Capacity:</label>
+    <input type="number" class="form-control" placeholder="Enter Capacity" id="Capacity" asp-for="@Model.Capacity" required/>
+  </div>
+
+  <button type="submit" class="btn btn-primary" style="margin: 10px">Add Room</button>
+</form>
+</body>
+</html>

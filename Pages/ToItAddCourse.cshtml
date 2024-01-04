@@ -1,0 +1,42 @@
+@page
+@model RMS.Pages.ToItAddCourse
+
+@{
+    Layout = "~/Pages/Shared/_ToIt.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>ToItAddRoom</title>
+</head>
+<body>
+<h1>Add Course</h1>
+<br/>
+@if (Model.successMessage)
+{
+    <div class="alert alert-success">
+        <strong>Success!</strong> Course has been added successfully.
+    </div>
+}
+<form method="post">
+    <div class="form-group">
+        <label for="CourseCode">Course Code:</label>
+        <input type="text" class="form-control" placeholder="Enter CourseCode" id="CourseCode" asp-for="@Model.CourseCode" required/>
+    </div>
+    <div class="form-group">
+        <label for="CourseName">CourseName:</label>
+        <input type="text" class="form-control" placeholder="Enter CourseName" id="CourseName" asp-for="@Model.CourseName" required/>
+    </div>
+
+    <div class="form-group">
+        <label for="Credits">Credits:</label>
+        <input type="number" class="form-control" placeholder="Enter Credits" id="Credits" asp-for="@Model.Credits" required/>
+    </div>
+
+    <button type="submit" class="btn btn-primary" style="margin: 10px">Add Course</button>
+</form>
+
+</body>
+</html>

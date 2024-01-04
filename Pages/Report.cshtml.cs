@@ -33,7 +33,7 @@ public class GReport : PageModel
         }
         else if (!string.IsNullOrEmpty(StudentID))
         {
-            string conString = @"Data Source=DESKTOP-R0BEJSG;Initial Catalog=RMS_DB;Integrated Security=True";
+            string conString = @"Data Source=SEIFS-DELL-G15;Initial Catalog=RMS_DB;Integrated Security=True";
             SqlConnection con = new SqlConnection(conString);
             string queryString = "SELECT RepNum, StudentID, CourseCode, Grade FROM GradeReport WHERE StudentID = @StudentID";
 
@@ -46,7 +46,7 @@ public class GReport : PageModel
         }
         else
         {
-            string conString = @"Data Source=DESKTOP-R0BEJSG;Initial Catalog=RMS_DB;Integrated Security=True";
+            string conString = @"Data Source=SEIFS-DELL-G15;Initial Catalog=RMS_DB;Integrated Security=True";
             SqlConnection con = new SqlConnection(conString);
             string queryString = "SELECT RepNum, StudentID, CourseCode, Grade FROM GradeReport";
 

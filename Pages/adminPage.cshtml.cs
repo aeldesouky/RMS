@@ -29,4 +29,10 @@ public IActionResult OnPost()
 {
     return RedirectToPage("/Student", new { ID = ID });
 }
+
+public IActionResult OnPostLogout()
+{
+    HttpContext.Session.Clear();
+    return RedirectToPage("/Index");
+}
 }

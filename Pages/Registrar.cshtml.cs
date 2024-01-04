@@ -50,4 +50,9 @@ public class Registrar : PageModel
         Console.WriteLine("empty ID");
         return RedirectToPage("/Registrar");
     }
+    public IActionResult OnPostLogout()
+    {
+        HttpContext.Session.Clear();
+        return RedirectToPage("/Index");
+    }
 }

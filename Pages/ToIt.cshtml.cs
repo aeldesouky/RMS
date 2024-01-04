@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
-
 using Microsoft.AspNetCore.Mvc;
+
 namespace RMS.Pages;
 
-public class ToProfTa : PageModel
+public class ToIt : PageModel
 {
     public int ReceivedValue { get; set; }
     public string Name { get; set; }
@@ -36,6 +36,7 @@ public class ToProfTa : PageModel
             reader.Close();
         }
     }
+
     public IActionResult OnPostLogout()
     {
         HttpContext.Session.Clear();
