@@ -33,7 +33,7 @@ public class ToStudentInfo : PageModel
     {
            StoredUserId = HttpContext.Session.GetString("UserID");
            GivenID=int.Parse(StoredUserId);
-            Console.WriteLine("GivenID: " + GivenID); // Check if GivenID is set correctly
+            Console.WriteLine("GivenID: " + GivenID); 
             string conString = @"Data Source=Abdullah;Initial Catalog=RMS_DB;Integrated Security=True";
             SqlConnection con = new SqlConnection(conString);
             string queryString = "SELECT ID, Name, Address, PhoneNo, Major, cGPA, GP FROM Student WHERE ID = @GIVENID";

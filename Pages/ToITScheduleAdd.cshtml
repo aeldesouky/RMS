@@ -1,0 +1,78 @@
+@page
+@model RMS.Pages.ToITScheduleAdd
+
+@{
+    Layout = "~/Pages/Shared/_ToIt.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<div>
+    <form method="post">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <div class="card mt-5">
+                        <div class="card-header text-center">
+                            <h5>Schedule Information</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label><strong>Group:</strong></label>
+                                    <input type="text" class="form-control" id="Name" asp-for="GP" value="@Model.GP">
+                                    
+                                    <<label for="courseCode"><strong>Course Code:</strong></label>
+                                     <select class="form-control" id="courseCode" asp-for="CourseCode" required>
+                                         <option value="">Select Course Code</option>
+                                         @foreach (var code in Model.CourseCodes)
+                                         {
+                                             <option value="@code">@code </option>
+                                         }
+                                     </select>
+                                    
+                                    
+                                    <<label for="RoomName"><strong>Room Name:</strong></label>
+                                     <select class="form-control" id="RoomName" asp-for="RoomName" required>
+                                         <option value="">Select Course Code</option>
+                                         @foreach (var r in Model.RoomNames)
+                                         {
+                                             <option value="@r">@r </option>
+                                         }
+                                     </select>
+                                    
+                                </div>
+                                <div class="col-6">
+                                    <strong>Day:</strong>
+                                        <select class="form-control" id="Day" asp-for="Day" required>
+                                            <option value="">Select Day</option>
+                                            <option value="Sunday">Sunday</option>
+                                            <option value="Monday">Monday</option>
+                                            <option value="Tuesday">Tuesday</option>
+                                            <option value="Wednesday">Wednesday</option>
+                                            <option value="Thursday">Thursday</option>
+                                        </select>
+                                    
+                                    <strong>Lec Time:</strong>
+                                    <input type="text" class="form-control" id="Type" asp-for="LecTime" value="@Model.LecTime">
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <form method="post">
+                                <button type="submit" class="btn btn-secondary btn-block">Add</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

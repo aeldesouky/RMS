@@ -33,7 +33,7 @@ public class Petition : PageModel
         }
         else
         {
-            string conString = @"Data Source=DESKTOP-R0BEJSG;Initial Catalog=RMS_DB;Integrated Security=True";
+            string conString = @"Data Source=Abdullah;Initial Catalog=RMS_DB;Integrated Security=True";
             SqlConnection con = new SqlConnection(conString);
             string queryString = "SELECT PetNum, StudentID, CourseCode, RegistrarID, Stat FROM Petition";
 
@@ -43,6 +43,7 @@ public class Petition : PageModel
             SqlDataReader reader = command.ExecuteReader();
             PetitionTable = new DataTable();
             PetitionTable.Load(reader);
+            
         }
     }
     public IActionResult OnPost()

@@ -1,0 +1,46 @@
+@page
+@model RMS.Pages.ToItAddProfCourse
+
+@{
+    Layout = "~/Pages/Shared/_ToIt.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Add Course To Professor</h1>
+        
+    <form method="post" id="mainForm">
+        <div class="form-group">
+            <label for="courseCode">Course Code:</label>
+                <select class="form-control" id="courseCode" asp-for="courseCode" required>
+                    <option value="">Select Course Code</option>
+                    @foreach (var code in Model.CourseCodes)
+                    {
+                        <option value="@code">@code </option>
+                    }
+                </select>
+                
+            
+           <label for="profID">Professor ID:</label>
+               <select class="form-control" id="profID" asp-for="profID" required>
+                   <option value="">Select Professor ID</option>
+                   @for (var i = 0; i < Model.profIDs.Count; i++)
+                   {
+                       <option value="@Model.profIDs[i]">@Model.profIDs[i] - @Model.ProfNames[i]</option>
+                   }
+               </select>
+        </div>
+
+        <button type="submit" class="btn btn-success">Add Course To Professor</button>
+    </form>
+</div>
+
+
+</body>
+</html>

@@ -29,6 +29,7 @@ public class ToItCreateStudent : PageModel
         string studentInsertQuery =
             "INSERT INTO Student (ID, Name, Address, PhoneNo, Major, cGPA, GP) VALUES (@ID, @Name, @Address, @PhoneNo, @Major, 0, 0)";
         string loginInsertQuery = "INSERT INTO Login (ID, Password,Type) VALUES (@ID, @Password,'Student')";
+        
 
         using (SqlConnection con = new SqlConnection(conString))
         {

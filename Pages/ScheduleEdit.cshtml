@@ -1,0 +1,61 @@
+@page
+@model RMS.Pages.ScheduleEdit
+
+@{
+    ViewData["Title"] = "Schedule Edit page";
+}
+
+<div class="container">
+<form method="get">
+    <div class="input-group" >
+        @foreach (var field in new[] { ("GP", "Group"), ("CourseCode", "Course Code"), ("Day", "Day") })
+        {
+            <label for="@field.Item1" class="input-group-prepend" style="margin-left: 10px">
+                <span class="input-group-text">@field.Item2</span>
+            </label>
+            <input type="text" class="form-control" id="@field.Item1" asp-for="@field.Item1" placeholder="Enter @field.Item2 here...">
+        }
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="submit" style="margin-left: 10px;">Filter</button>
+        </div>
+    </div>
+</form>
+    
+</div><hr/>
+
+<form method="post">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <div class="card mt-5">
+                    <div class="card-header text-center">
+                        <h5>Schedule Information</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <label><strong>Group:</strong></label>
+                                <input type="text" class="form-control" id="Name" asp-for="GP" value="@Model.GP">
+                                <label><strong>Course Code:</strong></label>
+                                <input type="text" class="form-control" id="RoomFloor" asp-for="CourseCode" value="@Model.CourseCode">
+                                <label><strong>Room:</strong></label>
+                                <input type="text" class="form-control" id="Number" asp-for="RoomName" value="@Model.RoomName">
+                            </div>
+                            <div class="col-6">
+                                <strong>Day:</strong>
+                                <input type="text" class="form-control" id="Zone" asp-for="Day" value="@Model.Day">
+                                <strong>Lec Time:</strong>
+                                <input type="text" class="form-control" id="Type" asp-for="LecTime" value="@Model.LecTime">
+                                </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <form method="post">
+                            <button type="submit" class="btn btn-secondary btn-block">Confirm</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

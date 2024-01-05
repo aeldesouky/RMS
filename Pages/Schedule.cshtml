@@ -7,17 +7,35 @@
 }
 
 <div class="container">
-  <form method="post">
+
+<form method="get" class="form-inline">
     <div class="input-group">
-      <label for="GP" class="input-group-prepend">
-        <span class="input-group-text">Group</span>
-      </label>
-      <input type="text" class="form-control" id="ID" asp-for="GP" value="@Model.GP" placeholder="Enter Group Number here...">
-      <div class="input-group-append">
-        <button class="btn btn-primary" type="submit">Filter</button>
-      </div>
+        <div  class="d-inline-flex">
+            <label for="GP" class="input-group-prepend">
+                <span class="input-group-text">Group</span>
+            </label>
+            <input type="text" class="form-control" id="GP" asp-for="GP" placeholder="Enter Group here...">
+        </div>
+        <div style="margin-left: 10px;" class="d-inline-flex">
+            <label for="CourseCode" class="input-group-prepend">
+                <span class="input-group-text">Course Code</span>
+            </label>
+            <input type="text" class="form-control" id="CourseCode" asp-for="CourseCode" placeholder="Enter Course Code here...">
+        </div>
+        <div style="margin-left: 10px;" class="d-inline-flex">
+            <label for="Day" class="input-group-prepend">
+                <span class="input-group-text">Day</span>
+            </label>
+            <input type="text" class="form-control" id="Day" asp-for="Day" placeholder="Enter Day here...">
+        </div>
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="submit" style="margin-left: 10px;">Filter</button>
+        </div>
+        <div class="input-group-append">
+            <a href="/ScheduleAdd" class="btn btn-primary" style="margin-left: 10px;">Add</a>
+        </div>
     </div>
-  </form>
+</form>
 </div><hr/>
 <table class="table">
     <tr>
@@ -35,6 +53,9 @@
             <td>@row["RoomName"].ToString()</td>
             <td>@row["Day"].ToString()</td>
             <td>@row["LecTime"].ToString()</td>
+            <td>
+                <a href="/ScheduleEdit?GP=@row["GP"].ToString()&CourseCode=@row["CourseCode"].ToString()&Day=@row["Day"].ToString()" >Edit</a>
+            </td>
         </tr>
     }
 </table>

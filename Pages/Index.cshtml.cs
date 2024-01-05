@@ -25,7 +25,7 @@ public class IndexModel : PageModel
         if (isvalid)
         {
             HttpContext.Session.SetString("UserID", userId.ToString());
-            return RedirectToPage("/ToStudent"); // Corrected redirection syntax
+            return RedirectToPage("/ToStudent"); 
         }
         else
         {
@@ -40,6 +40,7 @@ public class IndexModel : PageModel
         
         if (isvalid)
         {
+            HttpContext.Session.SetString("UserID", userId.ToString());
             return RedirectToPage("/adminPage");
         }
         else
@@ -87,7 +88,7 @@ public class IndexModel : PageModel
             command.Parameters.AddWithValue("@password", password);
 
             int count = (int)command.ExecuteScalar();
-            return count > 0; // Returns true if a matching record is found in the database
+            return count > 0; 
         }
     }
     private bool CheckITCredentials(int userId, string password)
@@ -102,7 +103,7 @@ public class IndexModel : PageModel
             command.Parameters.AddWithValue("@password", password);
 
             int count = (int)command.ExecuteScalar();
-            return count > 0; // Returns true if a matching record is found in the database
+            return count > 0; 
         }
     }
     private bool CheckStudentCredentials(int userId, string password)
@@ -117,7 +118,7 @@ public class IndexModel : PageModel
             command.Parameters.AddWithValue("@password", password);
 
             int count = (int)command.ExecuteScalar();
-            return count > 0; // Returns true if a matching record is found in the database
+            return count > 0; 
         }
     }
     
@@ -134,7 +135,7 @@ public class IndexModel : PageModel
             command.Parameters.AddWithValue("@password", password);
 
             int count = (int)command.ExecuteScalar();
-            return count > 0; // Returns true if a matching record is found in the database
+            return count > 0; 
         }
     }
     

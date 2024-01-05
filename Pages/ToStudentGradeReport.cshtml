@@ -1,0 +1,36 @@
+@page
+@model RMS.Pages.ToStudentGradeReport
+
+@{
+    Layout = "~/Pages/Shared/_Layout1.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<div class="container">
+    <table class="table">
+        <tr>
+            <th>Serial</th>
+            <th>StudentID</th>
+            <th>CourseCode</th>
+            <th>Grade</th>
+            
+        </tr>
+        @foreach (System.Data.DataRow row in Model.GradeReport.Rows)
+        {
+            <tr>
+                <td>@row["RepNum"].ToString()</td>
+                <td>@row["StudentID"].ToString()</td>
+                <td>@row["CourseCode"].ToString()</td>
+                <td>@row["Grade"].ToString()</td>
+            </tr>
+        }
+    </table>
+</div>
+</body>
+</html>

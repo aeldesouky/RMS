@@ -78,7 +78,7 @@ namespace RMS.Pages
                 }
             }
 
-            return RedirectToPage("/ToProfTaChangeGrade"); // Redirect to the same page after updating
+            return RedirectToPage("/ToProfTaChangeGrade"); 
         }
     }
 

@@ -38,7 +38,6 @@ public class ToProfTaSchedule : PageModel
             }
             string serializedCourseCodes = JsonConvert.SerializeObject(courseCodesf);
 
-            // Save serializedCourseCodes in the session
             HttpContext.Session.SetString("CourseCodes", serializedCourseCodes);
             foreach (var code in courseCodesf)
             {
@@ -60,7 +59,7 @@ public class ToProfTaSchedule : PageModel
                 DataTable tempTable = new DataTable();
                 tempTable.Load(reader);
 
-                ScheduleTable.Merge(tempTable); // Merge the result of each query into the main ScheduleTable
+                ScheduleTable.Merge(tempTable);
             }
             
             
